@@ -1,0 +1,31 @@
+<launch>
+    <!--set runtime core parameters-->
+    <param name="publish_robot_id_duration" type="double" value="0.1"/>
+    <param name="publish_swarm_list_duration" type="double" value="5.0"/>
+    <param name="default_neighbor_distance" type="double" value="1"/>
+    <param name="total_robot_numbers" type="int" value="3"/>
+    
+    <!--comm type-->
+    <param name="comm_type" type="string" value="ros_broker/ROSBroker"/>
+    <!--param name="comm_type" type="string" value="opensplice_dds_broker/OpenSpliceDDSBroker"/-->
+    <!--param name="comm_type" type="string" value="udp_bc_broker/UDPBCBroker"/-->
+
+    <group ns="robot_0">
+        <node pkg="micros_swarm" type="daemon_node" name="daemon_node0" output="screen">
+            <param name="robot_id" type="int" value="0"/>
+        </node>
+    </group>
+    <group ns="robot_1">
+        <node pkg="micros_swarm" type="daemon_node" name="daemon_node1" output="screen">
+            <param name="robot_id" type="int" value="1"/>
+        </node>
+    </group>
+    <group ns="robot_2">
+        <node pkg="micros_swarm" type="daemon_node" name="daemon_node2" output="screen">
+            <param name="robot_id" type="int" value="2"/>
+        </node>
+    </group>
+    
+    
+</launch>
+

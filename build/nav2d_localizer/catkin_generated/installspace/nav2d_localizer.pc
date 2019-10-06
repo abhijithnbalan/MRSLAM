@@ -1,0 +1,8 @@
+prefix=/home/plankton/DDP/install
+
+Name: nav2d_localizer
+Description: Description of nav2d_localizer
+Version: 0.3.2
+Cflags: -I/home/plankton/DDP/install/include
+Libs: -L/home/plankton/DDP/install/lib -lSelfLocalizer
+Requires: roscpp tf nav_msgs sensor_msgs geometry_msgs

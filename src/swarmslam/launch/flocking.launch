@@ -1,0 +1,22 @@
+<launch>
+    <group ns="robot_0">
+        <node pkg="app_loader" type="app_loader_node" name="app_loader_node0" output="screen">
+            <param name="app_name" type="string" value="app3"/>
+            <param name="app_type" type="string" value="app3/App3"/>
+        </node>
+    </group>
+    <group ns="robot_1">
+        <node pkg="app_loader" type="app_loader_node" name="app_loader_node1" output="screen">
+            <param name="app_name" type="string" value="app3"/>
+            <param name="app_type" type="string" value="app3/App3"/>
+        </node>
+    </group>
+    <group ns="robot_2">
+        <node pkg="app_loader" type="app_loader_node" name="app_loader_node2" output="screen">
+            <param name="app_name" type="string" value="app3"/>
+            <param name="app_type" type="string" value="app3/App3"/>
+        </node>
+    </group>
+    
+</launch>
+

@@ -1,0 +1,8 @@
+prefix=/home/plankton/DDP/devel
+
+Name: udp_bc_broker
+Description: Description of udp_bc_broker
+Version: 0.0.17
+Cflags: -I/home/plankton/DDP/src/micros_swarm_framework/core/udp_bc_broker/include
+Libs: -L/home/plankton/DDP/devel/lib 
+Requires: roscpp rospy message_runtime std_msgs micros_swarm

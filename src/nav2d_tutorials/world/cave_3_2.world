@@ -1,0 +1,51 @@
+include "p3at.inc"
+include "floorplan.inc"
+
+
+name                    "Navigation-2D Multi-Robot Tutorial"
+interval_sim            100
+quit_time                 0
+resolution                0.025
+show_clock                0
+show_clock_interval     100
+threads                 2
+
+window
+(
+  size [ 441 469 ] # in pixels
+  scale 12.724   # pixels per meter
+  center [ 0.271  -0.418 ]
+  rotate [ 0.000  0.000 ]
+  			
+  show_data 1              # 1=on 0=off
+)
+
+# Load an environment bitmap
+floorplan
+( 
+  name "cave"
+  size [30.000 30.000 0.800]
+  pose [0.000 0.000 0.000 0.000]
+  bitmap "worlds/bitmaps/cave.png"
+)
+
+# Put two robots into the world
+# Put two robots into the world
+pioneer3at
+(
+  name "robot1"
+  pose [-12.000 7.000 0.000 0.000]
+)
+
+# Put two robots into the world
+pioneer3at
+(
+  name "robot2"
+  pose [-13.000 -13.000 0.000 -0.000]
+)
+
+pioneer3at
+(
+  name "robot3"
+  pose [4.000 -4.000 0.000 0.000]
+)

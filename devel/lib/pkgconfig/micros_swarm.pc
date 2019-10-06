@@ -1,0 +1,8 @@
+prefix=/home/plankton/DDP/devel
+
+Name: micros_swarm
+Description: Description of micros_swarm
+Version: 0.0.17
+Cflags: -I/home/plankton/DDP/src/micros_swarm_framework/core/micros_swarm/include
+Libs: -L/home/plankton/DDP/devel/lib 
+Requires: roscpp rospy std_msgs message_runtime app_loader gsdf_msgs

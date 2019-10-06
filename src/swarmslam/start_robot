@@ -1,0 +1,16 @@
+#!/bin/bash
+rosservice call --wait /robot_0/StartMapping &
+rosservice call --wait /robot_1/StartMapping &
+rosservice call --wait /robot_2/StartMapping &
+rosservice call --wait /robot_3/StartMapping &
+rosservice call --wait /robot_4/StartMapping &
+# rosservice call --wait /robot_5/StartMapping &
+sleep 18 
+rosservice call --wait /robot_0/StartExploration &
+rosservice call --wait /robot_1/StartExploration &
+rosservice call --wait /robot_2/StartExploration &
+rosservice call --wait /robot_3/StartExploration &
+rosservice call --wait /robot_4/StartExploration &
+# rosservice call --wait /robot_5/StartExploration &
+
+exec "$@"

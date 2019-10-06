@@ -1,0 +1,8 @@
+prefix=/home/plankton/DDP/devel
+
+Name: ros_broker
+Description: Description of ros_broker
+Version: 0.0.17
+Cflags: -I/home/plankton/DDP/devel/include -I/home/plankton/DDP/src/micros_swarm_framework/core/ros_broker/include
+Libs: -L/home/plankton/DDP/devel/lib 
+Requires: roscpp rospy message_runtime std_msgs micros_swarm

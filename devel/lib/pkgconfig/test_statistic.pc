@@ -1,0 +1,8 @@
+prefix=/home/plankton/DDP/devel
+
+Name: test_statistic
+Description: Description of test_statistic
+Version: 0.0.17
+Cflags: 
+Libs: -L/home/plankton/DDP/devel/lib 
+Requires: roscpp rospy std_msgs nav_msgs geometry_msgs

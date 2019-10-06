@@ -1,0 +1,2 @@
+learning_tf:m-explore/explore:m-explore/map_merge:map_alloc:nav2d:nav2d_exploration:nav2d_karto:nav2d_localizer:nav2d_msgs:nav2d_navigator:nav2d_operator:nav2d_remote:nav2d_tutorials:swarmslam
+-DCATKIN_DEVEL_PREFIX=/home/plankton/DDP/devel -DCMAKE_INSTALL_PREFIX=/home/plankton/DDP/install -G Unix Makefiles

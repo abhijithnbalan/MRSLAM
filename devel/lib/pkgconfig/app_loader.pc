@@ -1,0 +1,8 @@
+prefix=/home/plankton/DDP/devel
+
+Name: app_loader
+Description: Description of app_loader
+Version: 0.0.17
+Cflags: -I/home/plankton/DDP/devel/include -I/home/plankton/DDP/src/micros_swarm_framework/core/app_loader/include
+Libs: -L/home/plankton/DDP/devel/lib 
+Requires: roscpp rospy std_msgs message_runtime

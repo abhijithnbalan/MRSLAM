@@ -1,0 +1,8 @@
+prefix=/home/plankton/DDP/devel
+
+Name: rrt_exploration
+Description: Description of rrt_exploration
+Version: 1.0.0
+Cflags: -I/home/plankton/DDP/devel/include
+Libs: -L/home/plankton/DDP/devel/lib 
+Requires: message_runtime

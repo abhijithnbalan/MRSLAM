@@ -1,0 +1,39 @@
+
+include "p3at.inc"
+include "floorplan.inc"
+
+size [30 20]
+resolution 0.02
+
+window
+( 
+  size [ 987.000 507.000 ] 
+  center [0.603 -0.075] 
+  scale 32.588
+)
+
+floorplan
+( 
+  bitmap "bitmaps/mbicp.png"
+   size [56.000 20.000 1.000]
+  name "pruebaScan"
+)
+
+# Put two robots into the world
+pioneer3at
+(
+  name "robot1"
+  pose [-11.000 0.000 0.000 0.000]
+)
+
+# Put two robots into the world
+pioneer3at
+(
+  name "robot2"
+  pose [-14.000 2.000 0.000 0.000]
+)
+
+pioneer3at
+(
+  name "robot3"
+  pose [-8.000 0.000 0.000 0.000]

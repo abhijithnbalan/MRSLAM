@@ -1,0 +1,8 @@
+prefix=/home/plankton/DDP/devel
+
+Name: opensplice_dds_broker
+Description: Description of opensplice_dds_broker
+Version: 0.0.17
+Cflags: -I/home/plankton/DDP/src/micros_swarm_framework/core/opensplice_dds_broker/include
+Libs: -L/home/plankton/DDP/devel/lib 
+Requires: roscpp rospy micros_swarm

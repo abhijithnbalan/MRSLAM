@@ -1,0 +1,41 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/plankton/DDP/devel/include",
+                "/opt/ros/kinetic/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/applications/app1/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/applications/app2/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/applications/app3/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/core/app_loader/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/applications/gazebo_flocking/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/tools/hector_quadrotor/hector_uav_msgs/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/core/micros_swarm/include",
+                "/home/plankton/DDP/src/nav2d_exploration/include",
+                "/home/plankton/DDP/src/nav2d_karto/include",
+                "/home/plankton/DDP/src/nav2d_localizer/include",
+                "/home/plankton/DDP/src/nav2d_navigator/include",
+                "/home/plankton/DDP/src/nav2d_operator/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/swarm_library/olfati_saber_flocking/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/core/opensplice_dds_broker/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/swarm_library/pso/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/core/ros_broker/include",
+                "/home/plankton/DDP/src/swarmslam/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/tests/testbb/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/tests/testnc/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/tests/testrth/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/tests/testscdspso/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/tests/testvstig/include",
+                "/home/plankton/DDP/src/micros_swarm_framework/core/udp_bc_broker/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,8 @@
+prefix=/home/plankton/DDP/install
+
+Name: map_alloc
+Description: Description of map_alloc
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/plankton/DDP/install/lib 
+Requires: 

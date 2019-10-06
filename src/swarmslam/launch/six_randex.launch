@@ -1,0 +1,188 @@
+<launch>
+
+	<!-- Some general parameters -->
+	<param name="use_sim_time" value="true" />
+	
+
+	<!-- Start Stage simulator with a given environment -->
+	<node name="Stage" pkg="stage_ros" type="stageros" args="$(find nav2d_tutorials)/world/cave_6.world">
+		<param name="base_watchdog_timeout" value="0" />
+	</node>
+
+    <node name="R0_MapAlign" pkg="tf" type="static_transform_publisher" args="-50 -25 0 0 0 0 /map /robot_0/map 100"/>
+    <node name="R1_MapAlign" pkg="tf" type="static_transform_publisher" args="0 -25 0 0 0 0 /map /robot_1/map 100"/> 
+	<node name="R2_MapAlign" pkg="tf" type="static_transform_publisher" args="50 -25 0 0 0 0 /map /robot_2/map 100"/>
+	<node name="R3_MapAlign" pkg="tf" type="static_transform_publisher" args="80 0 0 0 0 0 /map /robot_3/map 100"/>
+	<node name="R4_MapAlign" pkg="tf" type="static_transform_publisher" args="-80 0 0 0 0 0 /map /robot_4/map 100"/>
+
+	<!-- <group ns="robot_0/map_merge">
+		<param name="init_pose_x" value="-14"/>
+		<param name="init_pose_y" value="0"/>
+		<param name="init_pose_z" value="0.0"/>
+		<param name="init_pose_yaw" value="0.0"/>
+	</group>
+	<group ns="robot_1/map_merge">
+		<param name="init_pose_x" value="0"/>
+		<param name="init_pose_y" value="0"/>
+		<param name="init_pose_z" value="0.0"/>
+		<param name="init_pose_yaw" value="0.0"/>
+	</group>
+	<group ns="robot_2/map_merge">
+		<param name="init_pose_x" value="-8"/>
+		<param name="init_pose_y" value="0"/>
+		<param name="init_pose_z" value="0.0"/>
+		<param name="init_pose_yaw" value="0.0"/>
+	</group> -->
+
+	<group ns = "robot_0">
+		<!-- Some general parameters -->
+		<rosparam file="$(find nav2d_tutorials)/param/ros.yaml"/>
+			<param name="robot_id" value="1" />
+			<param name="tf_prefix" type="string" value="robot_0"/>
+		<!-- Start the Operator to control the simulated robot -->
+		<node name="Operator" pkg="nav2d_operator" type="operator" >
+			<remap from="scan" to="base_scan"/>
+			<rosparam file="$(find nav2d_tutorials)/param/operator.yaml"/>
+			<rosparam file="$(find nav2d_tutorials)/param/costmap.yaml" ns="local_map" />
+		</node>
+
+		<!-- Start Mapper to genreate map from laser scans -->
+		<node name="Mapper" pkg="nav2d_karto" type="mapper">
+			<remap from="scan" to="base_scan"/>
+			<rosparam file="$(find nav2d_tutorials)/param/mapper.yaml"/>
+			<param name = "map_topic" value = "/map_real" />
+		</node>
+
+		<!-- Start the Navigator to move the robot autonomously -->
+		<node name="Navigator" pkg="nav2d_navigator" type="navigator" output ="screen">
+			<rosparam file="$(find nav2d_tutorials)/param/navigator.yaml"/>
+			<param name = "exploration_strategy1" value = "RandExPlanner" />
+			<param name = "num_robots" value = "6" />
+			<param name = "robot_number" value = "1" />
+		</node>
+
+		<node name="GetMap" pkg="nav2d_navigator" type="get_map_client" />
+		<node name="Explore" pkg="nav2d_navigator" type="explore_client" />
+		<node name="SetGoal" pkg="nav2d_navigator" type="set_goal_client" />
+		
+		<node pkg="map_alloc" type="map_allocator" name="map_alloc" output = "screen">
+		<param name = "MapInput" value = "/map_real" />
+		<param name = "MapOutput" value = "/map" />
+		<param name = "num_robots" value = "6" />
+		<param name = "robot_number" value = "1" />
+		</node>
+	</group>	
+
+	<group ns = "robot_1">
+		<rosparam file="$(find nav2d_tutorials)/param/ros.yaml"/>
+		<!-- Some general parameters -->
+			<param name="robot_id" value="2" />
+			<param name="tf_prefix" type="string" value="robot_1"/>
+		<!-- Start the Operator to control the simulated robot -->
+		<node name="Operator" pkg="nav2d_operator" type="operator" >
+			<remap from="scan" to="base_scan"/>
+			<rosparam file="$(find nav2d_tutorials)/param/operator.yaml"/>
+			<rosparam file="$(find nav2d_tutorials)/param/costmap.yaml" ns="local_map" />
+		</node>
+
+		<!-- Start Mapper to genreate map from laser scans -->
+		<node name="Mapper" pkg="nav2d_karto" type="mapper">
+			<remap from="scan" to="base_scan"/>
+			<rosparam file="$(find nav2d_tutorials)/param/mapper.yaml"/>
+			<param name = "map_topic" value = "/map_real" />
+		</node>
+
+		<!-- Start the Navigator to move the robot autonomously -->
+		<node name="Navigator" pkg="nav2d_navigator" type="navigator" output ="screen">
+			<param name = "exploration_strategy1" value = "RandExPlanner" />
+			<rosparam file="$(find nav2d_tutorials)/param/navigator.yaml"/>
+			<param name = "num_robots" value = "6" />
+			<param name = "robot_number" value = "2" />
+		</node>
+
+		<node name="GetMap" pkg="nav2d_navigator" type="get_map_client" />
+		<node name="Explore" pkg="nav2d_navigator" type="explore_client" />
+		<node name="SetGoal" pkg="nav2d_navigator" type="set_goal_client" />
+
+		<node pkg="map_alloc" type="map_allocator" name="map_alloc" output = "screen">
+		<param name = "MapInput" value = "/map_real" />
+		<param name = "MapOutput" value = "/map" />
+		<param name = "num_robots" value = "6" />
+		<param name = "robot_number" value = "2" />
+		</node>
+
+	</group>	
+
+	<group ns = "robot_2">
+    	<rosparam file="$(find nav2d_tutorials)/param/ros.yaml"/>
+    	<!-- Some general parameters -->
+        <param name="robot_id" value="3" />
+        <param name="tf_prefix" type="string" value="robot_2"/>
+		<!-- Start the Operator to control the simulated robot -->
+		<node name="Operator" pkg="nav2d_operator" type="operator" >
+			<remap from="scan" to="base_scan"/>
+			<rosparam file="$(find nav2d_tutorials)/param/operator.yaml"/>
+			<rosparam file="$(find nav2d_tutorials)/param/costmap.yaml" ns="local_map" />
+		</node>
+
+		<!-- Start Mapper to genreate map from laser scans -->
+		<node name="Mapper" pkg="nav2d_karto" type="mapper">
+			<remap from="scan" to="base_scan"/>
+			<rosparam file="$(find nav2d_tutorials)/param/mapper.yaml"/>
+			<param name = "map_topic" value = "/map_real" />
+		</node>
+
+		<!-- Start the Navigator to move the robot autonomously -->
+		<node name="Navigator" pkg="nav2d_navigator" type="navigator" output ="screen">
+			<param name = "exploration_strategy1" value = "RandExPlanner" />
+			<rosparam file="$(find nav2d_tutorials)/param/navigator.yaml"/>
+			<param name = "num_robots" value = "6" />
+			<param name = "robot_number" value = "3" />
+		</node>
+
+		<node name="GetMap" pkg="nav2d_navigator" type="get_map_client" />
+		<node name="Explore" pkg="nav2d_navigator" type="explore_client" />
+		<node name="SetGoal" pkg="nav2d_navigator" type="set_goal_client" />
+
+		<node pkg="map_alloc" type="map_allocator" name="map_alloc" output = "screen">
+		<param name = "MapInput" value = "/map_real" />
+		<param name = "MapOutput" value = "/map" />
+		<param name = "num_robots" value = "6" />
+		<param name = "robot_number" value = "3" />
+		</node>
+
+	</group>	
+
+	<group ns = "robot_3">
+    	<rosparam file="$(find nav2d_tutorials)/param/ros.yaml"/>
+    	<!-- Some general parameters -->
+        <param name="robot_id" value="4" />
+        <param name="tf_prefix" type="string" value="robot_3"/>
+		<!-- Start the Operator to control the simulated robot -->
+		<node name="Operator" pkg="nav2d_operator" type="operator" >
+			<remap from="scan" to="base_scan"/>
+			<rosparam file="$(find nav2d_tutorials)/param/operator.yaml"/>
+			<rosparam file="$(find nav2d_tutorials)/param/costmap.yaml" ns="local_map" />
+		</node>
+
+		<!-- Start Mapper to genreate map from laser scans -->
+		<node name="Mapper" pkg="nav2d_karto" type="mapper">
+			<remap from="scan" to="base_scan"/>
+			<rosparam file="$(find nav2d_tutorials)/param/mapper.yaml"/>
+			<param name = "map_topic" value = "/map_real" />
+		</node>
+
+		<!-- Start the Navigator to move the robot autonomously -->
+		<node name="Navigator" pkg="nav2d_navigator" type="navigator" output ="screen">
+			<param name = "exploration_strategy1" value = "RandExPlanner" />
+			<rosparam file="$(find nav2d_tutorials)/param/navigator.yaml"/>
+			<param name = "num_robots" value = "6" />
+			<param name = "robot_number" value = "4" />
+		</node>
+
+		<node name="GetMap" pkg="nav2d_navigator" type="get_map_client" />
+		<node name="Explore" pkg="nav2d_navigator" type="explore_client" />
+		<node name="SetGoal" pkg="nav2d_navigator" type="set_goal_client" />
+
+		<node pkg="map_alloc" type="map_allocator" name="map_alloc" output = "screen">
+		<param name = "MapInput" value = "/map_re

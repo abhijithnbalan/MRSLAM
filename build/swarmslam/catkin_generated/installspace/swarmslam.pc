@@ -1,0 +1,8 @@
+prefix=/home/plankton/DDP/install
+
+Name: swarmslam
+Description: Description of swarmslam
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/plankton/DDP/install/lib 
+Requires: 
